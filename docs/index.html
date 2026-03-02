@@ -6,9 +6,11 @@
     <title>David Edgar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         :root {
             --bg: #f5f5f7;
@@ -18,7 +20,6 @@
             --accent: #0071e3;
             --accent-hover: #0077ed;
             --dark: #1d1d1f;
-            --dark-secondary: #2d2d30;
             --radius: 16px;
             --shadow: 0 2px 12px rgba(0,0,0,0.08);
             --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
@@ -38,65 +39,167 @@
             padding: 0 24px;
         }
 
+        /* ── Sticky Nav ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(26, 26, 46, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0 24px;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        nav.visible { transform: translateY(0); }
+
+        nav .nav-inner {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+        }
+
+        nav .nav-name {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav .nav-links a:hover { color: #fff; }
+
+        @media (max-width: 640px) {
+            nav .nav-links { gap: 14px; }
+            nav .nav-links a { font-size: 0.75rem; }
+        }
+
+        /* ── Scroll Reveal ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
         /* ── Hero ── */
         .hero {
             background: linear-gradient(145deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
             color: #fff;
-            padding: 80px 0 60px;
+            padding: 100px 0 80px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(0,113,227,0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(48,209,88,0.1) 0%, transparent 40%);
+            animation: heroGlow 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-5%, 3%) scale(1.05); }
+        }
+
+        .hero .container { position: relative; z-index: 1; }
+
         .headshot {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid rgba(255,255,255,0.2);
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            animation: fadeInDown 0.8s ease;
         }
 
         .avatar-placeholder {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             background: linear-gradient(135deg, #0071e3, #30d158);
             border: 4px solid rgba(255,255,255,0.2);
-            margin: 0 auto 20px;
+            margin: 0 auto 24px;
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: fadeInDown 0.8s ease;
         }
 
         .avatar-placeholder span {
             font-size: 3rem;
             font-weight: 700;
             color: #fff;
-            letter-spacing: -0.02em;
         }
 
-        /* Hide placeholder when headshot loads */
-        .hero img.headshot[src] + .avatar-placeholder { display: none; }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         .hero h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
             margin-bottom: 8px;
+            animation: fadeInUp 0.8s ease 0.1s both;
         }
 
         .hero .tagline {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: rgba(255,255,255,0.7);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            animation: fadeInUp 0.8s ease 0.2s both;
         }
 
         .hero .bio {
             font-size: 0.95rem;
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,0.5);
             max-width: 520px;
-            margin: 0 auto 24px;
+            margin: 0 auto 28px;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .social-links {
@@ -104,69 +207,65 @@
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
         }
 
         .social-links a {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 100px;
-            border: 1.5px solid rgba(255,255,255,0.3);
+            border: 1.5px solid rgba(255,255,255,0.25);
             color: #fff;
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
 
         .social-links a:hover {
             background: rgba(255,255,255,0.15);
             border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
         }
 
-        .social-links svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-        }
+        .social-links svg { width: 16px; height: 16px; fill: currentColor; }
 
-        /* ── Section ── */
-        .section {
-            padding: 56px 0;
-        }
+        /* ── Sections ── */
+        .section { padding: 72px 0; }
 
         .section-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 28px;
+            gap: 12px;
+            margin-bottom: 32px;
         }
 
         .section-header .icon-badge {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .section-header .icon-badge svg {
-            width: 18px;
-            height: 18px;
-            fill: #fff;
-        }
+        .section-header .icon-badge svg { width: 20px; height: 20px; fill: #fff; }
 
         .section-header h2 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
         }
 
-        .section-header .badge-blue { background: var(--accent); }
-        .section-header .badge-green { background: #30d158; }
-        .section-header .badge-purple { background: #bf5af2; }
+        .badge-blue { background: var(--accent); }
+        .badge-green { background: #30d158; }
+        .badge-purple { background: #bf5af2; }
+        .badge-orange { background: #ff9f0a; }
+
+        /* ── Alternating section backgrounds ── */
+        .section-alt { background: #fff; }
 
         /* ── Cards ── */
         .card-grid {
@@ -180,36 +279,39 @@
             border-radius: var(--radius);
             padding: 28px 24px;
             box-shadow: var(--shadow);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             text-decoration: none;
             color: inherit;
             display: flex;
             flex-direction: column;
         }
 
+        .section-alt .card { background: var(--bg); }
+
         .card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
         }
 
         .card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 16px;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
 
-        .card-icon.blue { background: #e8f2fe; color: var(--accent); }
-        .card-icon.green { background: #e3f9ec; color: #30a14e; }
-        .card-icon.orange { background: #fff3e0; color: #e67e22; }
-        .card-icon.purple { background: #f3e8ff; color: #8e44ad; }
+        .card-icon.blue { background: #e8f2fe; }
+        .card-icon.green { background: #e3f9ec; }
+        .card-icon.orange { background: #fff3e0; }
+        .card-icon.purple { background: #f3e8ff; }
 
         .card h3 {
-            font-size: 1.05rem;
+            font-size: 1.08rem;
             font-weight: 600;
             margin-bottom: 8px;
             letter-spacing: -0.01em;
@@ -218,7 +320,7 @@
         .card p {
             font-size: 0.88rem;
             color: var(--text-secondary);
-            line-height: 1.55;
+            line-height: 1.6;
             flex-grow: 1;
         }
 
@@ -234,57 +336,71 @@
             text-decoration: none;
         }
 
-        .card .card-link:hover { text-decoration: underline; }
-
         .card .card-link svg {
             width: 14px;
             height: 14px;
             fill: currentColor;
-            transition: transform 0.15s ease;
+            transition: transform 0.2s ease;
         }
 
-        .card:hover .card-link svg {
-            transform: translateX(3px);
+        .card:hover .card-link svg { transform: translateX(4px); }
+
+        /* ── Status badges ── */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 12px;
         }
 
-        /* ── About card (wide) ── */
+        .status-badge.active { background: #e3f9ec; color: #1a7f37; }
+        .status-badge.live { background: #e8f2fe; color: #0071e3; }
+
+        /* ── About card ── */
         .about-card {
             background: var(--surface);
             border-radius: var(--radius);
-            padding: 36px 32px;
+            padding: 40px 36px;
             box-shadow: var(--shadow);
-            display: flex;
-            gap: 32px;
-            align-items: flex-start;
         }
 
-        .about-card .about-details h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 12px;
+        .about-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 16px;
         }
 
-        .about-card .about-details p {
+        .about-card p {
             font-size: 0.92rem;
             color: var(--text-secondary);
-            margin-bottom: 12px;
-            line-height: 1.6;
+            margin-bottom: 14px;
+            line-height: 1.65;
         }
 
         .about-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-top: 16px;
+            margin-top: 20px;
         }
 
         .about-tags span {
-            padding: 5px 14px;
+            padding: 6px 16px;
             border-radius: 100px;
             background: var(--bg);
             font-size: 0.8rem;
             font-weight: 500;
             color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .about-tags span:hover {
+            background: var(--accent);
+            color: #fff;
         }
 
         /* ── Contact ── */
@@ -299,7 +415,7 @@
         }
 
         .contact-card {
-            background: var(--surface);
+            background: var(--bg);
             border-radius: var(--radius);
             padding: 32px 24px;
             box-shadow: var(--shadow);
@@ -307,10 +423,10 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 0;
             text-decoration: none;
             color: inherit;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
         }
@@ -324,20 +440,12 @@
             height: 4px;
         }
 
-        .contact-card.email-card::before {
-            background: linear-gradient(90deg, #0071e3, #5ac8fa);
-        }
-
-        .contact-card.phone-card::before {
-            background: linear-gradient(90deg, #30d158, #63e6be);
-        }
-
-        .contact-card.linkedin-card::before {
-            background: linear-gradient(90deg, #0a66c2, #5b9bd5);
-        }
+        .contact-card.email-card::before { background: linear-gradient(90deg, #0071e3, #5ac8fa); }
+        .contact-card.phone-card::before { background: linear-gradient(90deg, #30d158, #63e6be); }
+        .contact-card.linkedin-card::before { background: linear-gradient(90deg, #0a66c2, #5b9bd5); }
 
         .contact-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
         }
 
@@ -348,33 +456,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
             margin-bottom: 16px;
         }
 
-        .contact-icon svg {
-            width: 24px;
-            height: 24px;
-        }
+        .contact-icon svg { width: 24px; height: 24px; fill: #fff; }
+        .contact-icon.email-bg { background: linear-gradient(135deg, #0071e3, #5ac8fa); }
+        .contact-icon.phone-bg { background: linear-gradient(135deg, #30d158, #63e6be); }
+        .contact-icon.linkedin-bg { background: linear-gradient(135deg, #0a66c2, #5b9bd5); }
 
-        .contact-icon.email-bg {
-            background: linear-gradient(135deg, #0071e3, #5ac8fa);
-        }
-
-        .contact-icon.phone-bg {
-            background: linear-gradient(135deg, #30d158, #63e6be);
-        }
-
-        .contact-icon.linkedin-bg {
-            background: linear-gradient(135deg, #0a66c2, #5b9bd5);
-        }
-
-        .contact-icon svg { fill: #fff; }
-
-        .contact-info {
-            min-width: 0;
-            width: 100%;
-        }
+        .contact-info { min-width: 0; width: 100%; }
 
         .contact-info h3 {
             font-size: 0.75rem;
@@ -392,44 +482,48 @@
             word-break: break-all;
         }
 
-        /* ── Project status badges ── */
-        .status-badge {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 100px;
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            margin-bottom: 12px;
-        }
-
-        .status-badge.active { background: #e3f9ec; color: #1a7f37; }
-        .status-badge.planned { background: #fff3e0; color: #b45309; }
-        .status-badge.complete { background: #e8f2fe; color: #0071e3; }
-
         /* ── Footer ── */
         footer {
             background: var(--dark);
             color: rgba(255,255,255,0.5);
             text-align: center;
-            padding: 28px 0;
+            padding: 32px 0;
             font-size: 0.82rem;
         }
 
+        footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+        }
+
+        footer a:hover { color: #fff; }
+
         /* ── Responsive ── */
         @media (max-width: 640px) {
-            .hero { padding: 56px 0 44px; }
-            .hero h1 { font-size: 1.8rem; }
-            .about-card { flex-direction: column; gap: 16px; }
-            .section { padding: 40px 0; }
+            .hero { padding: 72px 0 56px; }
+            .hero h1 { font-size: 2rem; }
+            .section { padding: 48px 0; }
+            .about-card { padding: 28px 24px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Sticky Nav -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <span class="nav-name">David Edgar</span>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#presentations">Presentations</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero" id="top">
         <div class="container">
             <div id="avatar-wrap">
                 <div class="avatar-placeholder" id="avatar-fallback">
@@ -453,139 +547,114 @@
     </section>
 
     <!-- About -->
-    <section class="section">
+    <section class="section" id="about">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <div class="icon-badge badge-green">
                     <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                 </div>
                 <h2>About</h2>
             </div>
-            <div class="about-card">
-                <div class="about-details">
-                    <h3>IT Leader &amp; Mac Admin</h3>
-                    <p>David has been working in IT since 2006, when he began his degree at Old Dominion University. A computer hobbyist and technology enthusiast for as long as he can remember, he turned that passion into a career spanning nearly two decades across endpoint management, automation, and infrastructure.</p>
-                    <p>For the past seven-plus years he's led and grown teams in his department, combining hands-on technical skills with people-focused leadership. He specializes in Apple device management with Jamf Pro and loves building tools that make life easier for IT teams.</p>
-                    <p>Outside of work, David is an avid runner and enjoys sharing knowledge with the Mac admin community at conferences like ACCS.</p>
-                    <div class="about-tags">
-                        <span>Team Leadership</span>
-                        <span>Jamf Pro</span>
-                        <span>macOS</span>
-                        <span>Apple MDM</span>
-                        <span>Automation</span>
-                        <span>Scripting</span>
-                        <span>Old Dominion University</span>
-                        <span>Runner</span>
-                    </div>
+            <div class="about-card reveal reveal-delay-1">
+                <h3>IT Leader &amp; Mac Admin</h3>
+                <p>David has been working in IT since 2006, when he began his degree at Old Dominion University. A computer hobbyist and technology enthusiast for as long as he can remember, he turned that passion into a career spanning nearly two decades across endpoint management, automation, and infrastructure.</p>
+                <p>For the past seven-plus years he's led and grown teams in his department, combining hands-on technical skills with people-focused leadership. He specializes in Apple device management with Jamf Pro and loves building tools that make life easier for IT teams.</p>
+                <p>Outside of work, David is an avid runner and enjoys sharing knowledge with the Mac admin community at conferences like ACCS.</p>
+                <div class="about-tags">
+                    <span>Team Leadership</span>
+                    <span>Jamf Pro</span>
+                    <span>macOS</span>
+                    <span>Apple MDM</span>
+                    <span>Automation</span>
+                    <span>Scripting</span>
+                    <span>Old Dominion University</span>
+                    <span>Runner</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ACCS Jamf Presentation -->
-    <section class="section" style="background: #fff; padding-top: 56px; padding-bottom: 56px;">
+    <section class="section section-alt" id="presentations">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <div class="icon-badge badge-blue">
                     <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
                 </div>
                 <h2>ACCS Jamf Presentation</h2>
             </div>
             <div class="card-grid">
-
-                <a href="https://learn.jamf.com/en-US/bundle/jamf-app-catalog/page/Jamf_App_Catalog.html" target="_blank" rel="noopener" class="card">
+                <a href="https://learn.jamf.com/en-US/bundle/jamf-app-catalog/page/Jamf_App_Catalog.html" target="_blank" rel="noopener" class="card reveal reveal-delay-1">
                     <div class="card-icon blue">📦</div>
                     <h3>Jamf App Catalog</h3>
                     <p>A curated collection of ready-to-deploy Mac applications managed through Jamf Pro. Simplifies app distribution and keeps software current across your fleet.</p>
-                    <span class="card-link">
-                        View Documentation
-                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                    </span>
+                    <span class="card-link">View Documentation <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
                 </a>
 
-                <a href="https://learn.jamf.com/en-US/bundle/jamf-pro-documentation-current/page/App_Installers.html" target="_blank" rel="noopener" class="card">
+                <a href="https://learn.jamf.com/en-US/bundle/jamf-pro-documentation-current/page/App_Installers.html" target="_blank" rel="noopener" class="card reveal reveal-delay-2">
                     <div class="card-icon green">⬇️</div>
                     <h3>App Installers</h3>
                     <p>Deploy and automatically update Mac apps using Jamf Pro's App Installers. Handles packaging, versioning, and distribution with minimal admin overhead.</p>
-                    <span class="card-link">
-                        View Documentation
-                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                    </span>
+                    <span class="card-link">View Documentation <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
                 </a>
 
-                <a href="https://github.com/d-edgar/jamf_stuff" target="_blank" rel="noopener" class="card">
+                <a href="https://github.com/d-edgar/jamf_stuff" target="_blank" rel="noopener" class="card reveal reveal-delay-3">
                     <div class="card-icon purple">🛠️</div>
                     <h3>jamf_stuff</h3>
                     <p>David's open-source collection of Jamf-related scripts, extension attributes, and tools. Practical resources for fellow Mac admins.</p>
-                    <span class="card-link">
-                        View on GitHub
-                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                    </span>
+                    <span class="card-link">View on GitHub <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
                 </a>
 
-                <a href="accs-jamf-presentation.pdf" target="_blank" rel="noopener" class="card">
+                <a href="accs-jamf-presentation.pdf" target="_blank" rel="noopener" class="card reveal reveal-delay-4">
                     <div class="card-icon orange">📄</div>
                     <h3>Presentation Slides</h3>
                     <p>Jamf — Set It and Forget It. The full slide deck from the CNU ACCS presentation covering App Catalog and App Installers.</p>
-                    <span class="card-link">
-                        View Slides (PDF)
-                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                    </span>
+                    <span class="card-link">View Slides (PDF) <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
                 </a>
-
             </div>
         </div>
     </section>
 
     <!-- Projects -->
-    <section class="section">
+    <section class="section" id="projects">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <div class="icon-badge badge-purple">
                     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                 </div>
                 <h2>Projects</h2>
             </div>
             <div class="card-grid">
-
-                <a href="https://d-edgar.github.io/chatharbor-site/index.html" target="_blank" rel="noopener" class="card">
+                <a href="https://d-edgar.github.io/chatharbor-site/index.html" target="_blank" rel="noopener" class="card reveal reveal-delay-1">
                     <span class="status-badge active">Active</span>
                     <div class="card-icon blue">⚓</div>
                     <h3>ChatHarbor</h3>
                     <p>All your chats, one harbor. A unified messaging platform built with security in mind and workspace at its core. Bring conversations together in one place.</p>
-                    <span class="card-link">
-                        Visit Site
-                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                    </span>
+                    <span class="card-link">Visit Site <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
                 </a>
 
-                <a href="https://modularitsm.com" target="_blank" rel="noopener" class="card">
-                    <span class="status-badge planned">In Progress</span>
+                <a href="https://modularitsm.com" target="_blank" rel="noopener" class="card reveal reveal-delay-2">
+                    <span class="status-badge live">Live</span>
                     <div class="card-icon orange">🧩</div>
                     <h3>ModularITSM</h3>
-                    <p>A modular approach to IT service management. Currently in development — stay tuned for updates.</p>
-                    <span class="card-link">
-                        modularitsm.com
-                        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                    </span>
+                    <p>A modular approach to IT service management. Rethinking how IT teams handle service delivery with flexible, composable building blocks.</p>
+                    <span class="card-link">modularitsm.com <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
                 </a>
-
             </div>
         </div>
     </section>
 
     <!-- Contact -->
-    <section class="section" style="background: #fff; padding-top: 56px; padding-bottom: 56px;">
+    <section class="section section-alt" id="contact">
         <div class="container">
-            <div class="section-header">
-                <div class="icon-badge badge-blue">
+            <div class="section-header reveal">
+                <div class="icon-badge badge-orange">
                     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 </div>
                 <h2>Get in Touch</h2>
             </div>
             <div class="contact-grid">
-
-                <a href="mailto:david.emerson.edgar@gmail.com" class="contact-card email-card">
+                <a href="mailto:david.emerson.edgar@gmail.com" class="contact-card email-card reveal reveal-delay-1">
                     <div class="contact-icon email-bg">
                         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     </div>
@@ -595,7 +664,7 @@
                     </div>
                 </a>
 
-                <a href="tel:+17578030184" class="contact-card phone-card">
+                <a href="tel:+17578030184" class="contact-card phone-card reveal reveal-delay-2">
                     <div class="contact-icon phone-bg">
                         <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                     </div>
@@ -605,7 +674,7 @@
                     </div>
                 </a>
 
-                <a href="https://www.linkedin.com/in/davidedgarcnu/" target="_blank" rel="noopener" class="contact-card linkedin-card">
+                <a href="https://www.linkedin.com/in/davidedgarcnu/" target="_blank" rel="noopener" class="contact-card linkedin-card reveal reveal-delay-3">
                     <div class="contact-icon linkedin-bg">
                         <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     </div>
@@ -614,7 +683,6 @@
                         <p>davidedgarcnu</p>
                     </div>
                 </a>
-
             </div>
         </div>
     </section>
@@ -622,12 +690,12 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            &copy; 2026 David Edgar &middot; Built with care, no frameworks required
+            &copy; 2026 David Edgar &middot; <a href="#top">Back to top</a>
         </div>
     </footer>
 
     <script>
-        // Try to load headshot — try jpg first, then png
+        // Headshot loader
         function tryHeadshot(sources) {
             if (!sources.length) return;
             var img = new Image();
@@ -642,6 +710,30 @@
             img.src = sources[0];
         }
         tryHeadshot(['headshot.jpg', 'headshot.png', 'headshot.jpeg']);
+
+        // Sticky nav — show after scrolling past hero
+        var navbar = document.getElementById('navbar');
+        var hero = document.querySelector('.hero');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > hero.offsetHeight - 60) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        // Scroll reveal with IntersectionObserver
+        var reveals = document.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(function(el) { observer.observe(el); });
     </script>
 </body>
 </html>
