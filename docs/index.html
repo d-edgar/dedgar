@@ -270,11 +270,46 @@
         /* ── Alternating section backgrounds ── */
         .section-alt { background: #fff; }
 
+        /* ── Year sub-header ── */
+        .year-group { margin-bottom: 40px; }
+        .year-group:last-child { margin-bottom: 0; }
+
+        .year-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .year-label .year-tag {
+            padding: 2px 10px;
+            border-radius: 100px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
         /* ── Cards ── */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
+        }
+
+        .card-grid.centered {
+            grid-template-columns: repeat(2, minmax(280px, 380px));
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .card-grid.centered { grid-template-columns: 1fr; }
         }
 
         .card {
@@ -584,37 +619,48 @@
                 <div class="icon-badge badge-blue">
                     <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
                 </div>
-                <h2>ACCS Jamf Presentation</h2>
+                <h2>Presentations</h2>
             </div>
-            <div class="card-grid">
-                <a href="https://learn.jamf.com/en-US/bundle/jamf-app-catalog/page/Jamf_App_Catalog.html" target="_blank" rel="noopener" class="card reveal reveal-delay-1">
-                    <div class="card-icon blue">📦</div>
-                    <h3>Jamf App Catalog</h3>
-                    <p>A curated collection of ready-to-deploy Mac applications managed through Jamf Pro. Simplifies app distribution and keeps software current across your fleet.</p>
-                    <span class="card-link">View Documentation <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-                </a>
 
-                <a href="https://learn.jamf.com/en-US/bundle/jamf-pro-documentation-current/page/App_Installers.html" target="_blank" rel="noopener" class="card reveal reveal-delay-2">
-                    <div class="card-icon green">⬇️</div>
-                    <h3>App Installers</h3>
-                    <p>Deploy and automatically update Mac apps using Jamf Pro's App Installers. Handles packaging, versioning, and distribution with minimal admin overhead.</p>
-                    <span class="card-link">View Documentation <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-                </a>
+            <!-- 2026 ACCS -->
+            <div class="year-group">
+                <div class="year-label reveal">
+                    ACCS 2026 — Jamf: Set It and Forget It
+                    <span class="year-tag">CNU</span>
+                </div>
+                <div class="card-grid">
+                    <a href="accs-jamf-presentation.pdf" target="_blank" rel="noopener" class="card reveal reveal-delay-1">
+                        <div class="card-icon orange">📄</div>
+                        <h3>Presentation Slides</h3>
+                        <p>The full slide deck covering Jamf App Catalog and App Installers — automating Mac app deployment so you can set it and forget it.</p>
+                        <span class="card-link">View Slides (PDF) <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
+                    </a>
 
-                <a href="https://github.com/d-edgar/jamf_stuff" target="_blank" rel="noopener" class="card reveal reveal-delay-3">
-                    <div class="card-icon purple">🛠️</div>
-                    <h3>jamf_stuff</h3>
-                    <p>David's open-source collection of Jamf-related scripts, extension attributes, and tools. Practical resources for fellow Mac admins.</p>
-                    <span class="card-link">View on GitHub <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-                </a>
+                    <a href="https://learn.jamf.com/en-US/bundle/jamf-app-catalog/page/Jamf_App_Catalog.html" target="_blank" rel="noopener" class="card reveal reveal-delay-2">
+                        <div class="card-icon blue">📦</div>
+                        <h3>Jamf App Catalog</h3>
+                        <p>A curated collection of ready-to-deploy Mac applications managed through Jamf Pro. Simplifies app distribution and keeps software current across your fleet.</p>
+                        <span class="card-link">View Documentation <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
+                    </a>
 
-                <a href="accs-jamf-presentation.pdf" target="_blank" rel="noopener" class="card reveal reveal-delay-4">
-                    <div class="card-icon orange">📄</div>
-                    <h3>Presentation Slides</h3>
-                    <p>Jamf — Set It and Forget It. The full slide deck from the CNU ACCS presentation covering App Catalog and App Installers.</p>
-                    <span class="card-link">View Slides (PDF) <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-                </a>
+                    <a href="https://learn.jamf.com/en-US/bundle/jamf-pro-documentation-current/page/App_Installers.html" target="_blank" rel="noopener" class="card reveal reveal-delay-3">
+                        <div class="card-icon green">⬇️</div>
+                        <h3>App Installers</h3>
+                        <p>Deploy and automatically update Mac apps using Jamf Pro's App Installers. Handles packaging, versioning, and distribution with minimal admin overhead.</p>
+                        <span class="card-link">View Documentation <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
+                    </a>
+
+                    <a href="https://github.com/d-edgar/jamf_stuff" target="_blank" rel="noopener" class="card reveal reveal-delay-4">
+                        <div class="card-icon purple">🛠️</div>
+                        <h3>jamf_stuff</h3>
+                        <p>David's open-source collection of Jamf-related scripts, extension attributes, and tools. Practical resources for fellow Mac admins.</p>
+                        <span class="card-link">View on GitHub <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
+                    </a>
+                </div>
             </div>
+
+            <!-- Future years go here — just copy the year-group block above -->
+
         </div>
     </section>
 
@@ -627,7 +673,7 @@
                 </div>
                 <h2>Projects</h2>
             </div>
-            <div class="card-grid">
+            <div class="card-grid centered">
                 <a href="https://d-edgar.github.io/chatharbor-site/index.html" target="_blank" rel="noopener" class="card reveal reveal-delay-1">
                     <span class="status-badge active">Active</span>
                     <div class="card-icon blue">⚓</div>
