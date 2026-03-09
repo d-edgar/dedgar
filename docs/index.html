@@ -178,7 +178,6 @@
             background: var(--surface); border: 1px solid var(--border);
             border-radius: var(--radius); padding: 40px 36px;
             box-shadow: var(--shadow-sm);
-            max-width: 720px;
         }
         .about-box h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -.02em; }
         .about-box p { font-size: .92rem; color: var(--text-2); margin-bottom: 14px; line-height: 1.7; }
@@ -208,7 +207,7 @@
             display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;
         }
         .card-grid.centered {
-            grid-template-columns: repeat(2, minmax(280px, 400px)); justify-content: center;
+            grid-template-columns: repeat(2, minmax(280px, 1fr));
         }
         @media (max-width: 768px) { .card-grid.centered { grid-template-columns: 1fr; } }
 
@@ -261,7 +260,7 @@
         .status-badge.wip { background: var(--orange-wash); color: var(--orange); }
 
         /* ── Contact ───────────────────────────────────── */
-        .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(280px, 400px)); gap: 20px; justify-content: center; }
+        .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: 20px; }
         @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
 
         .contact-card {
