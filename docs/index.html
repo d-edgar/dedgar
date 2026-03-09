@@ -254,6 +254,7 @@
         }
         .status-badge.active { background: var(--green-wash); color: var(--green); }
         .status-badge.oss { background: var(--accent-wash); color: var(--accent); }
+        .status-badge.wip { background: var(--orange-wash); color: var(--orange); }
 
         /* ── Contact ───────────────────────────────────── */
         .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
@@ -449,9 +450,9 @@
             </div>
             <h2>Projects</h2>
         </div>
-        <div class="card-grid centered">
+        <div class="card-grid">
             <a href="https://chatharbor.app" target="_blank" rel="noopener" class="card reveal reveal-d1">
-                <span class="status-badge active">Active</span>
+                <span class="status-badge oss">Open Source</span>
                 <div class="card-icon blue"><i class="fa-solid fa-anchor"></i></div>
                 <h3>ChatHarbor</h3>
                 <p>All your chats, one harbor. A unified messaging platform built with security in mind and workspace at its core. Bring conversations together in one place.</p>
@@ -460,10 +461,19 @@
 
             <a href="https://modularitsm.com" target="_blank" rel="noopener" class="card reveal reveal-d2">
                 <span class="status-badge oss">Open Source</span>
+                <span class="status-badge wip">Work in Progress</span>
                 <div class="card-icon purple"><i class="fa-solid fa-puzzle-piece"></i></div>
                 <h3>ModularITSM</h3>
                 <p>A free, open source IT Service Management platform. Pick the modules you need, self-host with full isolation, and own your data. Built by an IT pro, for IT teams. AGPL-3.0 licensed.</p>
                 <span class="card-link">modularitsm.com <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
+            </a>
+
+            <a href="#" class="card reveal reveal-d3">
+                <span class="status-badge active">Active</span>
+                <div class="card-icon orange"><i class="fa-solid fa-fire"></i></div>
+                <h3>Stoked</h3>
+                <p>A streak and countdown tracker for iOS. Track habits, count down to big days, see money and calories saved, and earn milestones along the way. No accounts, no ads.</p>
+                <span class="card-link">App Store <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
             </a>
         </div>
     </div>
