@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoked — Support</title>
+    <meta name="description" content="Get help with Stoked, the streak and countdown tracker for iOS.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --text: #111827;
+            --text-2: #4b5563;
+            --text-3: #9ca3af;
+            --accent: #2563eb;
+            --accent-light: #3b82f6;
+            --accent-wash: #eff6ff;
+            --border: #e5e7eb;
+            --radius: 16px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+            --shadow: 0 4px 16px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg); color: var(--text);
+            line-height: 1.6; -webkit-font-smoothing: antialiased;
+            min-height: 100vh; display: flex; flex-direction: column;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .hero {
+            background: linear-gradient(155deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: #fff; padding: 72px 24px 56px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 50% 60% at 20% 20%, rgba(37,99,235,.2), transparent),
+                radial-gradient(ellipse 40% 50% at 80% 70%, rgba(124,58,237,.12), transparent);
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900;
+            letter-spacing: -.04em; line-height: 1.1; margin-bottom: 8px;
+        }
+        .hero p {
+            font-size: 1rem; color: rgba(255,255,255,.5); font-weight: 500;
+        }
+
+        .content {
+            flex: 1; max-width: 600px; margin: 0 auto;
+            padding: 48px 24px 64px; width: 100%;
+        }
+
+        .support-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 36px 32px;
+            box-shadow: var(--shadow-sm); margin-bottom: 24px;
+        }
+        .support-card h2 {
+            font-size: 1.15rem; font-weight: 700; margin-bottom: 12px;
+            letter-spacing: -.02em;
+        }
+        .support-card p {
+            font-size: .92rem; color: var(--text-2); line-height: 1.7; margin-bottom: 20px;
+        }
+        .support-card p:last-child { margin-bottom: 0; }
+
+        .email-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 14px 28px; border-radius: 100px;
+            background: var(--accent); color: #fff;
+            font-size: .92rem; font-weight: 600; text-decoration: none;
+            transition: background .2s, transform .15s;
+        }
+        .email-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px); text-decoration: none;
+        }
+        .email-btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+        .faq h3 {
+            font-size: .95rem; font-weight: 700; margin-bottom: 6px;
+            letter-spacing: -.01em;
+        }
+        .faq p { margin-bottom: 20px; }
+        .faq p:last-child { margin-bottom: 0; }
+
+        footer {
+            background: #111827; color: rgba(255,255,255,.4);
+            text-align: center; padding: 28px 0; font-size: .8rem;
+        }
+
+        @media (max-width: 640px) {
+            .hero { padding: 56px 24px 44px; }
+            .support-card { padding: 28px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="hero-content">
+        <h1>Stoked Support</h1>
+        <p>Streak &amp; Countdown Tracker</p>
+    </div>
+</div>
+
+<div class="content">
+    <div class="support-card">
+        <h2>Need help?</h2>
+        <p>If you're running into an issue, have a question, or just want to share feedback, send an email and I'll get back to you as soon as I can.</p>
+        <a href="mailto:david.emerson.edgar@gmail.com?subject=Stoked%20Support" class="email-btn">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            Email Support
+        </a>
+    </div>
+
+    <div class="support-card faq">
+        <h2>Common questions</h2>
+
+        <h3>Where is my data stored?</h3>
+        <p>All your streaks, countdowns, and milestones are stored locally on your device. Nothing leaves your phone.</p>
+
+        <h3>How do I change my notification time?</h3>
+        <p>Open Stoked, go to Settings, and tap the reminder time to choose when you'd like to be notified.</p>
+
+        <h3>Can I recover a deleted streak?</h3>
+        <p>Unfortunately, once a streak is deleted it can't be recovered. We recommend being careful with the delete button!</p>
+
+        <h3>Is Stoked free?</h3>
+        <p>Yes. No subscriptions, no accounts, no ads.</p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 David Edgar
+</footer>
+
+</body>
+</html>
