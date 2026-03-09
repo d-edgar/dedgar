@@ -260,7 +260,7 @@
         .status-badge.wip { background: var(--orange-wash); color: var(--orange); }
 
         /* ── Contact ───────────────────────────────────── */
-        .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(280px, 400px)); gap: 20px; justify-content: center; }
         @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
 
         .contact-card {
@@ -395,7 +395,7 @@
                 ACCS 2026 — Jamf: Set It and Forget It
                 <span class="year-tag">CNU</span>
             </div>
-            <div class="card-grid">
+            <div class="card-grid centered">
                 <a href="accs-jamf-presentation.pdf" target="_blank" rel="noopener" class="card reveal reveal-d1">
                     <div class="card-icon orange"><i class="fa-solid fa-file-powerpoint"></i></div>
                     <h3>Presentation Slides</h3>
@@ -424,19 +424,6 @@
                     <span class="card-link">View on GitHub <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
                 </a>
 
-                <a href="https://accsva2026.sched.com" target="_blank" rel="noopener" class="card reveal reveal-d1">
-                    <div class="card-icon blue"><i class="fa-solid fa-calendar-days"></i></div>
-                    <h3>ACCS 2026 Schedule</h3>
-                    <p>View the full conference schedule for ACCS 2026 — find sessions, speakers, and plan your day.</p>
-                    <span class="card-link">View Schedule <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-                </a>
-
-                <a href="https://accsva.org/conference/" target="_blank" rel="noopener" class="card reveal reveal-d2">
-                    <div class="card-icon green"><i class="fa-solid fa-building-columns"></i></div>
-                    <h3>ACCS Conference</h3>
-                    <p>The official ACCS Virginia conference page — registration, venue details, and everything you need to know about the event.</p>
-                    <span class="card-link">Visit ACCS <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-                </a>
             </div>
         </div>
 
