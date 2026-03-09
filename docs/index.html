@@ -247,10 +247,13 @@
         .card:hover .card-link svg { transform: translateX(4px); }
 
         /* ── Status Badges ─────────────────────────────── */
+        .badge-row {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;
+        }
         .status-badge {
             display: inline-block; padding: 4px 14px; border-radius: 100px;
             font-size: .7rem; font-weight: 700; text-transform: uppercase;
-            letter-spacing: .05em; margin-bottom: 14px;
+            letter-spacing: .05em;
         }
         .status-badge.active { background: var(--green-wash); color: var(--green); }
         .status-badge.oss { background: var(--accent-wash); color: var(--accent); }
@@ -452,7 +455,7 @@
         </div>
         <div class="card-grid">
             <a href="https://chatharbor.app" target="_blank" rel="noopener" class="card reveal reveal-d1">
-                <span class="status-badge oss">Open Source</span>
+                <div class="badge-row"><span class="status-badge oss">Open Source</span></div>
                 <div class="card-icon blue"><i class="fa-solid fa-anchor"></i></div>
                 <h3>ChatHarbor</h3>
                 <p>All your chats, one harbor. A unified messaging platform built with security in mind and workspace at its core. Bring conversations together in one place.</p>
@@ -460,8 +463,7 @@
             </a>
 
             <a href="https://modularitsm.com" target="_blank" rel="noopener" class="card reveal reveal-d2">
-                <span class="status-badge oss">Open Source</span>
-                <span class="status-badge wip">Work in Progress</span>
+                <div class="badge-row"><span class="status-badge oss">Open Source</span><span class="status-badge wip">Work in Progress</span></div>
                 <div class="card-icon purple"><i class="fa-solid fa-puzzle-piece"></i></div>
                 <h3>ModularITSM</h3>
                 <p>A free, open source IT Service Management platform. Pick the modules you need, self-host with full isolation, and own your data. Built by an IT pro, for IT teams. AGPL-3.0 licensed.</p>
@@ -469,7 +471,7 @@
             </a>
 
             <a href="#" class="card reveal reveal-d3">
-                <span class="status-badge active">Active</span>
+                <div class="badge-row"><span class="status-badge active">Active</span></div>
                 <div class="card-icon orange"><i class="fa-solid fa-fire"></i></div>
                 <h3>Stoked</h3>
                 <p>A streak and countdown tracker for iOS. Track habits, count down to big days, see money and calories saved, and earn milestones along the way. No accounts, no ads.</p>
