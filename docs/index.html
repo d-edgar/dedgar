@@ -264,7 +264,7 @@
         @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
 
         .contact-card {
-            background: var(--bg); border: 1px solid var(--border);
+            background: var(--surface); border: 1px solid var(--border);
             border-radius: var(--radius); padding: 32px 24px;
             display: flex; flex-direction: column; align-items: center; text-align: center;
             text-decoration: none; color: inherit; position: relative; overflow: hidden;
@@ -305,19 +305,19 @@
         /* ── Responsive ────────────────────────────────── */
         /* ── macOS Banner ──────────────────────────────── */
         .macos-banner {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 100%);
             border-radius: var(--radius); padding: 40px 36px;
             display: flex; gap: 28px; align-items: flex-start;
             box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
         }
         .macos-banner::before {
             content: ''; position: absolute; top: -40%; right: -10%; width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,.04), transparent 70%);
+            background: radial-gradient(circle, rgba(52,211,153,.12), transparent 70%);
             border-radius: 50%;
         }
         .macos-banner-icon {
             width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
-            background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center;
         }
         .macos-banner-icon i { font-size: 1.6rem; color: #fff; }
         .macos-banner-content { position: relative; z-index: 1; }
@@ -326,23 +326,43 @@
             letter-spacing: -.02em; margin-bottom: 10px;
         }
         .macos-banner-content p {
-            font-size: .9rem; color: rgba(255,255,255,.55); line-height: 1.7; margin-bottom: 20px;
+            font-size: .9rem; color: rgba(255,255,255,.6); line-height: 1.7; margin-bottom: 20px;
         }
-        .macos-highlights { display: flex; flex-wrap: wrap; gap: 10px; }
-        .macos-chip {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 8px 18px; border-radius: 100px;
-            background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
-            color: rgba(255,255,255,.8); font-size: .8rem; font-weight: 600;
-            text-decoration: none; transition: background .2s, border-color .2s, transform .15s;
+        .macos-highlights {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
         }
-        .macos-chip:hover {
-            background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.3);
-            transform: translateY(-2px); text-decoration: none;
+        .macos-minicard {
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 16px; border-radius: 12px;
+            background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.15);
+            color: #fff; text-decoration: none;
+            transition: background .2s, border-color .2s, transform .15s, box-shadow .2s;
         }
-        .macos-chip i { font-size: .75rem; }
+        .macos-minicard:hover {
+            background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.35);
+            transform: translateY(-3px); text-decoration: none;
+            box-shadow: 0 8px 24px rgba(0,0,0,.25);
+        }
+        .macos-minicard-icon {
+            width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
+            background: rgba(255,255,255,.12);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .macos-minicard-icon i { font-size: .9rem; color: #fff; }
+        .macos-minicard-text h3 {
+            font-size: .88rem; font-weight: 700; color: #fff;
+            margin-bottom: 3px; letter-spacing: -.01em;
+        }
+        .macos-minicard-text p {
+            font-size: .76rem; color: rgba(255,255,255,.5);
+            line-height: 1.45; margin: 0;
+        }
+        @media (max-width: 540px) {
+            .macos-highlights { grid-template-columns: 1fr; }
+        }
         @media (max-width: 640px) {
-            .macos-banner { flex-direction: column; padding: 28px 24px; gap: 16px; }
+            .macos-banner { flex-direction: column; padding: 28px 20px; gap: 16px; }
+            .macos-minicard { padding: 12px; }
         }
 
         /* ── Collapsible Archive ──────────────────────── */
@@ -387,9 +407,10 @@
     <div class="nav-inner">
         <span class="nav-name">David Edgar</span>
         <div class="nav-links">
-            <a href="#about">About</a>
+            <a href="#macos">Apple</a>
             <a href="#presentations">Presentations</a>
             <a href="#projects">Projects</a>
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </div>
     </div>
@@ -423,36 +444,8 @@
     </div>
 </section>
 
-<!-- ─── About ────────────────────────────────────────── -->
-<section class="section" id="about">
-    <div class="container">
-        <div class="section-head reveal">
-            <div class="section-icon si-green">
-                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-            </div>
-            <h2>About</h2>
-        </div>
-        <div class="about-box reveal reveal-d1">
-            <h3>IT Leader &amp; Mac Admin</h3>
-            <p>David has been working in IT since 2006, when he began his degree at Old Dominion University. A computer hobbyist and technology enthusiast for as long as he can remember, he turned that passion into a career spanning nearly two decades across endpoint management, automation, and infrastructure.</p>
-            <p>For the past seven-plus years he's led and grown teams in his department, combining hands-on technical skills with people-focused leadership. He specializes in Apple device management with Jamf Pro and loves building tools that make life easier for IT teams.</p>
-            <p>Outside of work, David is an avid runner and enjoys sharing knowledge with the Mac admin community at conferences like ACCS.</p>
-            <div class="tags">
-                <span>Team Leadership</span>
-                <span>Jamf Pro</span>
-                <span>macOS</span>
-                <span>Apple MDM</span>
-                <span>Automation</span>
-                <span>Scripting</span>
-                <span>Old Dominion University</span>
-                <span>Runner</span>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- ─── macOS Spotlight ──────────────────────────────── -->
-<section class="section section-alt" id="macos">
+<section class="section" id="macos">
     <div class="container">
         <div class="macos-banner reveal">
             <div class="macos-banner-icon">
@@ -462,17 +455,33 @@
                 <h2>macOS &amp; Apple Ecosystem</h2>
                 <p>Deep experience managing Apple fleets at scale with Jamf Pro, building native macOS tools in Swift and SwiftUI, and contributing to open source projects that make Mac administration easier. From endpoint management and MDM automation to native app development, Apple is at the core of what I build and manage.</p>
                 <div class="macos-highlights">
-                    <a href="https://github.com/pathaksomesh06/ABMate" target="_blank" rel="noopener" class="macos-chip">
-                        <i class="fa-solid fa-laptop-code"></i> ABMate
+                    <a href="https://github.com/pathaksomesh06/ABMate" target="_blank" rel="noopener" class="macos-minicard">
+                        <div class="macos-minicard-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                        <div class="macos-minicard-text">
+                            <h3>ABMate</h3>
+                            <p>Native macOS app for managing devices through Apple Business Manager and Apple School Manager APIs.</p>
+                        </div>
                     </a>
-                    <a href="https://github.com/d-edgar/macosadminremediation" target="_blank" rel="noopener" class="macos-chip">
-                        <i class="fa-solid fa-shield-halved"></i> macOS Admin Remediation
+                    <a href="https://github.com/d-edgar/macosadminremediation" target="_blank" rel="noopener" class="macos-minicard">
+                        <div class="macos-minicard-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="macos-minicard-text">
+                            <h3>macOS Admin Remediation</h3>
+                            <p>Lightweight toolkit for remediating local admin rights. Works with any MDM, no agents required.</p>
+                        </div>
                     </a>
-                    <a href="https://github.com/d-edgar/jamf_stuff" target="_blank" rel="noopener" class="macos-chip">
-                        <i class="fa-solid fa-screwdriver-wrench"></i> jamf_stuff
+                    <a href="https://github.com/d-edgar/mac_admin_toolkit" target="_blank" rel="noopener" class="macos-minicard">
+                        <div class="macos-minicard-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <div class="macos-minicard-text">
+                            <h3>mac_admin_toolkit</h3>
+                            <p>Open source collection of macOS admin scripts, Jamf extension attributes, and endpoint management tools.</p>
+                        </div>
                     </a>
-                    <a href="https://apps.apple.com/us/app/stay-stoked/id6760155330" target="_blank" rel="noopener" class="macos-chip">
-                        <i class="fa-solid fa-fire"></i> Stay Stoked (iOS)
+                    <a href="https://apps.apple.com/us/app/stay-stoked/id6760155330" target="_blank" rel="noopener" class="macos-minicard">
+                        <div class="macos-minicard-icon"><i class="fa-solid fa-fire"></i></div>
+                        <div class="macos-minicard-text">
+                            <h3>Stay Stoked</h3>
+                            <p>iOS streak and countdown tracker. Habits, milestones, and savings. No accounts, no ads.</p>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -482,6 +491,7 @@
 
 <!-- ─── Presentations ────────────────────────────────── -->
 <section class="section section-alt" id="presentations">
+
     <div class="container">
         <div class="section-head reveal">
             <div class="section-icon si-blue">
@@ -521,9 +531,9 @@
                         <span class="card-link">View Documentation <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
                     </a>
 
-                    <a href="https://github.com/d-edgar/jamf_stuff" target="_blank" rel="noopener" class="card">
+                    <a href="https://github.com/d-edgar/mac_admin_toolkit" target="_blank" rel="noopener" class="card">
                         <div class="card-icon purple"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                        <h3>jamf_stuff</h3>
+                        <h3>mac_admin_toolkit</h3>
                         <p>David's open-source collection of Jamf-related scripts, extension attributes, and tools. Practical resources for fellow Mac admins.</p>
                         <span class="card-link">View on GitHub <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
                     </a>
@@ -543,15 +553,7 @@
             <h2>Projects</h2>
         </div>
         <div class="card-grid centered">
-            <a href="https://github.com/pathaksomesh06/ABMate" target="_blank" rel="noopener" class="card reveal reveal-d1">
-                <div class="badge-row"><span class="status-badge oss">Open Source</span><span class="status-badge active">Contributor</span></div>
-                <div class="card-icon green"><i class="fa-solid fa-laptop-code"></i></div>
-                <h3>ABMate</h3>
-                <p>A native macOS app for managing Apple devices through Apple Business Manager and Apple School Manager APIs. Streamlines device assignment, inventory sync with Jamf Pro, AppleCare lookups, and bulk operations through a clean SwiftUI interface. MIT licensed.</p>
-                <span class="card-link">View on GitHub <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-            </a>
-
-            <a href="https://chatharbor.app" target="_blank" rel="noopener" class="card reveal reveal-d2">
+            <a href="https://chatharbor.app" target="_blank" rel="noopener" class="card reveal reveal-d1">
                 <div class="badge-row"><span class="status-badge oss">Open Source</span></div>
                 <div class="card-icon blue"><i class="fa-solid fa-anchor"></i></div>
                 <h3>ChatHarbor</h3>
@@ -559,35 +561,47 @@
                 <span class="card-link">Visit Site <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
             </a>
 
-            <a href="https://modularitsm.com" target="_blank" rel="noopener" class="card reveal reveal-d3">
+            <a href="https://modularitsm.com" target="_blank" rel="noopener" class="card reveal reveal-d2">
                 <div class="badge-row"><span class="status-badge wip">Work in Progress</span></div>
                 <div class="card-icon purple"><i class="fa-solid fa-puzzle-piece"></i></div>
                 <h3>ModularITSM</h3>
                 <p>A free, open source IT Service Management platform. Pick the modules you need, self-host with full isolation, and own your data. Built by an IT pro, for IT teams. AGPL-3.0 licensed.</p>
                 <span class="card-link">modularitsm.com <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
             </a>
+        </div>
+    </div>
+</section>
 
-            <a href="https://apps.apple.com/us/app/stay-stoked/id6760155330" target="_blank" rel="noopener" class="card reveal reveal-d4">
-                <div class="badge-row"><span class="status-badge active">Active</span></div>
-                <div class="card-icon orange"><i class="fa-solid fa-fire"></i></div>
-                <h3>Stay Stoked</h3>
-                <p>A streak and countdown tracker for iOS. Track habits, count down to big days, see money and calories saved, and earn milestones along the way. No accounts, no ads.</p>
-                <span class="card-link">App Store <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-            </a>
-
-            <a href="https://github.com/d-edgar/macosadminremediation" target="_blank" rel="noopener" class="card reveal reveal-d1">
-                <div class="badge-row"><span class="status-badge oss">Open Source</span></div>
-                <div class="card-icon green"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>macOS Admin Remediation</h3>
-                <p>A lightweight toolkit for remediating local admin rights on macOS. Works with any MDM that can deploy packages and configuration profiles — no agents or daemons required.</p>
-                <span class="card-link">View on GitHub <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-            </a>
+<!-- ─── About ────────────────────────────────────────── -->
+<section class="section section-alt" id="about">
+    <div class="container">
+        <div class="section-head reveal">
+            <div class="section-icon si-green">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            </div>
+            <h2>About</h2>
+        </div>
+        <div class="about-box reveal reveal-d1">
+            <h3>IT Leader &amp; Mac Admin</h3>
+            <p>David has been working in IT since 2006, when he began his degree at Old Dominion University. A computer hobbyist and technology enthusiast for as long as he can remember, he turned that passion into a career spanning nearly two decades across endpoint management, automation, and infrastructure.</p>
+            <p>For the past seven-plus years he's led and grown teams in his department, combining hands-on technical skills with people-focused leadership. He specializes in Apple device management with Jamf Pro and loves building tools that make life easier for IT teams.</p>
+            <p>Outside of work, David is an avid runner and enjoys sharing knowledge with the Mac admin community at conferences like ACCS.</p>
+            <div class="tags">
+                <span>Team Leadership</span>
+                <span>Jamf Pro</span>
+                <span>macOS</span>
+                <span>Apple MDM</span>
+                <span>Automation</span>
+                <span>Scripting</span>
+                <span>Old Dominion University</span>
+                <span>Runner</span>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- ─── Contact ──────────────────────────────────────── -->
-<section class="section section-alt" id="contact">
+<section class="section" id="contact">
     <div class="container">
         <div class="section-head reveal">
             <div class="section-icon si-orange">
