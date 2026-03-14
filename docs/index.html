@@ -189,6 +189,23 @@
         }
         .tags span:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
+        .speaking-row {
+            margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border);
+        }
+        .speaking-row h4 {
+            font-size: .72rem; font-weight: 700; color: var(--text-3);
+            text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px;
+        }
+        .speaking-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: .9rem; font-weight: 600; color: var(--text);
+            text-decoration: none; transition: color .2s;
+        }
+        .speaking-link i { color: var(--accent); font-size: .85rem; }
+        .speaking-link svg { opacity: .4; transition: opacity .2s, transform .2s; }
+        .speaking-link:hover { color: var(--accent); text-decoration: none; }
+        .speaking-link:hover svg { opacity: 1; transform: translateX(3px); }
+
         /* ── Year Group ────────────────────────────────── */
         .year-group { margin-bottom: 40px; }
         .year-group:last-child { margin-bottom: 0; }
@@ -383,7 +400,6 @@
         <span class="nav-name">David Edgar</span>
         <div class="nav-links">
             <a href="#macos">Apple</a>
-            <a href="#presentations">Presentations</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </div>
@@ -455,60 +471,6 @@
     </div>
 </section>
 
-<!-- ─── Presentations ────────────────────────────────── -->
-<section class="section section-alt" id="presentations">
-
-    <div class="container">
-        <div class="section-head reveal">
-            <div class="section-icon si-blue">
-                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
-            </div>
-            <h2>Presentations</h2>
-        </div>
-
-        <!-- Future presentations go here above the archive -->
-
-        <div class="year-group reveal">
-            <button class="archive-toggle" id="archive-toggle-accs26" onclick="toggleArchive('accs26')">
-                <svg class="archive-chevron" id="chevron-accs26" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                <h3>ACCS 2026 — Jamf: Set It and Forget It</h3>
-                <span class="archive-tag">Archive</span>
-            </button>
-            <div class="archive-content" id="archive-accs26">
-                <div class="card-grid centered">
-                    <a href="accs-jamf-presentation.pdf" target="_blank" rel="noopener" class="card">
-                        <div class="card-icon orange"><i class="fa-solid fa-file-powerpoint"></i></div>
-                        <h3>Presentation Slides</h3>
-                        <p>The full slide deck covering Jamf App Catalog and App Installers — automating Mac app deployment so you can set it and forget it.</p>
-                        <span class="card-link">View Slides (PDF) <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-                    </a>
-
-                    <a href="https://learn.jamf.com/en-US/bundle/jamf-app-catalog/page/Jamf_App_Catalog.html" target="_blank" rel="noopener" class="card">
-                        <div class="card-icon blue"><i class="fa-solid fa-cube"></i></div>
-                        <h3>Jamf App Catalog</h3>
-                        <p>A curated collection of ready-to-deploy Mac applications managed through Jamf Pro. Simplifies app distribution and keeps software current across your fleet.</p>
-                        <span class="card-link">View Documentation <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-                    </a>
-
-                    <a href="https://learn.jamf.com/en-US/bundle/jamf-pro-documentation-current/page/App_Installers.html" target="_blank" rel="noopener" class="card">
-                        <div class="card-icon green"><i class="fa-solid fa-download"></i></div>
-                        <h3>App Installers</h3>
-                        <p>Deploy and automatically update Mac apps using Jamf Pro's App Installers. Handles packaging, versioning, and distribution with minimal admin overhead.</p>
-                        <span class="card-link">View Documentation <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-                    </a>
-
-                    <a href="https://github.com/d-edgar/mac_admin_toolkit" target="_blank" rel="noopener" class="card">
-                        <div class="card-icon purple"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                        <h3>mac_admin_toolkit</h3>
-                        <p>David's open-source collection of Jamf-related scripts, extension attributes, and tools. Practical resources for fellow Mac admins.</p>
-                        <span class="card-link">View on GitHub <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- ─── About ────────────────────────────────────────── -->
 <section class="section section-alt" id="about">
     <div class="container">
@@ -532,6 +494,14 @@
                 <span>Scripting</span>
                 <span>Old Dominion University</span>
                 <span>Runner</span>
+            </div>
+            <div class="speaking-row">
+                <h4>Speaking</h4>
+                <a href="accs-jamf-presentation.pdf" target="_blank" rel="noopener" class="speaking-link">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    ACCS 2026 — Jamf: Set It and Forget It
+                    <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </a>
             </div>
         </div>
     </div>
@@ -616,14 +586,6 @@
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(function(el) { observer.observe(el); });
-
-    // Archive toggle
-    function toggleArchive(id) {
-        var content = document.getElementById('archive-' + id);
-        var chevron = document.getElementById('chevron-' + id);
-        content.classList.toggle('open');
-        chevron.classList.toggle('open');
-    }
 </script>
 </body>
 </html>
