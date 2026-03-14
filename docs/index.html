@@ -303,67 +303,42 @@
         footer a:hover { color: #fff; }
 
         /* ── Responsive ────────────────────────────────── */
-        /* ── macOS Banner ──────────────────────────────── */
-        .macos-banner {
-            background: linear-gradient(135deg, #064e3b 0%, #065f46 40%, #047857 100%);
-            border-radius: var(--radius); padding: 40px 36px;
-            display: flex; gap: 28px; align-items: flex-start;
-            box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+        /* ── macOS Section ─────────────────────────────── */
+        .macos-intro {
+            max-width: 600px; margin-bottom: 32px;
         }
-        .macos-banner::before {
-            content: ''; position: absolute; top: -40%; right: -10%; width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(52,211,153,.12), transparent 70%);
-            border-radius: 50%;
+        .macos-intro p {
+            font-size: .92rem; color: var(--text-2); line-height: 1.7;
         }
-        .macos-banner-icon {
-            width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
-            background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center;
+        .macos-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
         }
-        .macos-banner-icon i { font-size: 1.6rem; color: #fff; }
-        .macos-banner-content { position: relative; z-index: 1; }
-        .macos-banner-content h2 {
-            font-size: 1.4rem; font-weight: 800; color: #fff;
-            letter-spacing: -.02em; margin-bottom: 10px;
+        .macos-item {
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            padding: 24px 16px; border-radius: var(--radius);
+            background: var(--surface); border: 1px solid var(--border);
+            text-decoration: none; color: inherit;
+            transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s, border-color .25s;
         }
-        .macos-banner-content p {
-            font-size: .9rem; color: rgba(255,255,255,.6); line-height: 1.7; margin-bottom: 20px;
+        .macos-item:hover {
+            transform: translateY(-4px); box-shadow: var(--shadow-lg);
+            border-color: var(--green); text-decoration: none;
         }
-        .macos-highlights {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px;
-        }
-        .macos-minicard {
-            display: flex; align-items: flex-start; gap: 12px;
-            padding: 16px; border-radius: 12px;
-            background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.15);
-            color: #fff; text-decoration: none;
-            transition: background .2s, border-color .2s, transform .15s, box-shadow .2s;
-        }
-        .macos-minicard:hover {
-            background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.35);
-            transform: translateY(-3px); text-decoration: none;
-            box-shadow: 0 8px 24px rgba(0,0,0,.25);
-        }
-        .macos-minicard-icon {
-            width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
-            background: rgba(255,255,255,.12);
+        .macos-item-icon {
+            width: 44px; height: 44px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
+            margin-bottom: 14px; background: var(--green-wash); color: var(--green);
         }
-        .macos-minicard-icon i { font-size: .9rem; color: #fff; }
-        .macos-minicard-text h3 {
-            font-size: .88rem; font-weight: 700; color: #fff;
-            margin-bottom: 3px; letter-spacing: -.01em;
+        .macos-item-icon i { font-size: 1.1rem; }
+        .macos-item h3 {
+            font-size: .9rem; font-weight: 700; margin-bottom: 6px;
+            letter-spacing: -.01em; color: var(--text);
         }
-        .macos-minicard-text p {
-            font-size: .76rem; color: rgba(255,255,255,.5);
-            line-height: 1.45; margin: 0;
+        .macos-item p {
+            font-size: .78rem; color: var(--text-3); line-height: 1.5; margin: 0;
         }
-        @media (max-width: 540px) {
-            .macos-highlights { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 640px) {
-            .macos-banner { flex-direction: column; padding: 28px 20px; gap: 16px; }
-            .macos-minicard { padding: 12px; }
-        }
+        @media (max-width: 768px) { .macos-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .macos-grid { grid-template-columns: 1fr; } }
 
         /* ── Collapsible Archive ──────────────────────── */
         .archive-toggle {
@@ -444,47 +419,39 @@
     </div>
 </section>
 
-<!-- ─── macOS Spotlight ──────────────────────────────── -->
+<!-- ─── macOS & Apple ─────────────────────────────────── -->
 <section class="section" id="macos">
     <div class="container">
-        <div class="macos-banner reveal">
-            <div class="macos-banner-icon">
-                <i class="fa-brands fa-apple"></i>
+        <div class="section-head reveal">
+            <div class="section-icon si-green">
+                <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             </div>
-            <div class="macos-banner-content">
-                <h2>macOS &amp; Apple Ecosystem</h2>
-                <p>Deep experience managing Apple fleets at scale with Jamf Pro, building native macOS tools in Swift and SwiftUI, and contributing to open source projects that make Mac administration easier. From endpoint management and MDM automation to native app development, Apple is at the core of what I build and manage.</p>
-                <div class="macos-highlights">
-                    <a href="https://github.com/pathaksomesh06/ABMate" target="_blank" rel="noopener" class="macos-minicard">
-                        <div class="macos-minicard-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                        <div class="macos-minicard-text">
-                            <h3>ABMate</h3>
-                            <p>Native macOS app for managing devices through Apple Business Manager and Apple School Manager APIs.</p>
-                        </div>
-                    </a>
-                    <a href="https://github.com/d-edgar/macosadminremediation" target="_blank" rel="noopener" class="macos-minicard">
-                        <div class="macos-minicard-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <div class="macos-minicard-text">
-                            <h3>macOS Admin Remediation</h3>
-                            <p>Lightweight toolkit for remediating local admin rights. Works with any MDM, no agents required.</p>
-                        </div>
-                    </a>
-                    <a href="https://github.com/d-edgar/mac_admin_toolkit" target="_blank" rel="noopener" class="macos-minicard">
-                        <div class="macos-minicard-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                        <div class="macos-minicard-text">
-                            <h3>mac_admin_toolkit</h3>
-                            <p>Open source collection of macOS admin scripts, Jamf extension attributes, and endpoint management tools.</p>
-                        </div>
-                    </a>
-                    <a href="https://apps.apple.com/us/app/stay-stoked/id6760155330" target="_blank" rel="noopener" class="macos-minicard">
-                        <div class="macos-minicard-icon"><i class="fa-solid fa-fire"></i></div>
-                        <div class="macos-minicard-text">
-                            <h3>Stay Stoked</h3>
-                            <p>iOS streak and countdown tracker. Habits, milestones, and savings. No accounts, no ads.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            <h2>Apple Ecosystem</h2>
+        </div>
+        <div class="macos-intro reveal reveal-d1">
+            <p>Managing Apple fleets at scale with Jamf Pro, building native macOS and iOS tools, and contributing to open source projects that make Mac administration easier.</p>
+        </div>
+        <div class="macos-grid">
+            <a href="https://github.com/pathaksomesh06/ABMate" target="_blank" rel="noopener" class="macos-item reveal reveal-d1">
+                <div class="macos-item-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>ABMate</h3>
+                <p>Native macOS app for Apple Business Manager</p>
+            </a>
+            <a href="https://github.com/d-edgar/macosadminremediation" target="_blank" rel="noopener" class="macos-item reveal reveal-d2">
+                <div class="macos-item-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Admin Remediation</h3>
+                <p>Lightweight local admin rights toolkit</p>
+            </a>
+            <a href="https://github.com/d-edgar/mac_admin_toolkit" target="_blank" rel="noopener" class="macos-item reveal reveal-d3">
+                <div class="macos-item-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                <h3>mac_admin_toolkit</h3>
+                <p>macOS scripts and Jamf extension attributes</p>
+            </a>
+            <a href="https://apps.apple.com/us/app/stay-stoked/id6760155330" target="_blank" rel="noopener" class="macos-item reveal reveal-d4">
+                <div class="macos-item-icon"><i class="fa-solid fa-fire"></i></div>
+                <h3>Stay Stoked</h3>
+                <p>iOS streak and countdown tracker</p>
+            </a>
         </div>
     </div>
 </section>
