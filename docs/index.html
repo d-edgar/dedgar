@@ -280,6 +280,72 @@
         .status-badge.oss { background: var(--accent-wash); color: var(--accent); }
         .status-badge.wip { background: var(--orange-wash); color: var(--orange); }
 
+        /* ── ChatHarbor Showcase ──────────────────────── */
+        .chatharbor-showcase {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 40px 36px;
+            box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+        }
+        .chatharbor-showcase::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, #7c3aed, #a78bfa, #2563eb);
+        }
+        .chatharbor-top {
+            display: flex; align-items: center; gap: 18px; margin-bottom: 24px;
+        }
+        .chatharbor-logo {
+            width: 56px; height: 56px; border-radius: 14px;
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(124,58,237,.25);
+        }
+        .chatharbor-logo i { font-size: 1.4rem; color: #fff; }
+        .chatharbor-top h3 {
+            font-size: 1.35rem; font-weight: 800; letter-spacing: -.03em; margin: 0;
+        }
+        .chatharbor-top .ch-url {
+            font-size: .82rem; color: var(--text-3); font-weight: 500; margin-top: 2px;
+        }
+        .chatharbor-desc {
+            font-size: .92rem; color: var(--text-2); line-height: 1.7; margin-bottom: 28px;
+            max-width: 640px;
+        }
+        .ch-features {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px;
+        }
+        .ch-feature {
+            padding: 20px 18px; border-radius: 12px;
+            background: var(--surface-alt); border: 1px solid var(--border);
+        }
+        .ch-feature-icon {
+            width: 36px; height: 36px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 12px;
+        }
+        .ch-feature-icon.purple { background: var(--purple-wash); color: var(--purple); }
+        .ch-feature-icon.blue { background: var(--accent-wash); color: var(--accent); }
+        .ch-feature-icon.green { background: var(--green-wash); color: var(--green); }
+        .ch-feature-icon i { font-size: .95rem; }
+        .ch-feature h4 {
+            font-size: .88rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -.01em;
+        }
+        .ch-feature p { font-size: .78rem; color: var(--text-3); line-height: 1.55; margin: 0; }
+        .ch-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; border-radius: 100px;
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            color: #fff; font-size: .88rem; font-weight: 600;
+            text-decoration: none; transition: transform .2s, box-shadow .2s;
+            box-shadow: 0 4px 16px rgba(124,58,237,.25);
+        }
+        .ch-cta:hover {
+            transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,.35);
+            text-decoration: none; color: #fff;
+        }
+        .ch-cta svg { width: 14px; height: 14px; fill: currentColor; }
+        @media (max-width: 768px) { .ch-features { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .chatharbor-showcase { padding: 28px 24px; } }
+
         /* ── Contact ───────────────────────────────────── */
         .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(280px, 1fr)); gap: 20px; }
         @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
@@ -404,6 +470,7 @@
         <span class="nav-name">David Edgar</span>
         <div class="nav-links">
             <a href="#macos">Apple</a>
+            <a href="#chatharbor">ChatHarbor</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </div>
@@ -470,6 +537,42 @@
                 <div class="macos-item-icon"><i class="fa-solid fa-fire"></i></div>
                 <h3>Stay Stoked</h3>
                 <p>iOS streak and countdown tracker</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── ChatHarbor ───────────────────────────────────── -->
+<section class="section section-alt" id="chatharbor">
+    <div class="container">
+        <div class="section-head reveal">
+            <div class="section-icon si-purple">
+                <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/></svg>
+            </div>
+            <h2>ChatHarbor</h2>
+        </div>
+        <div class="chatharbor-showcase reveal reveal-d1">
+            <p class="chatharbor-desc">A multi model AI chat client that brings GPT, Claude, Gemini, and more into one clean interface. One app, every model, no tab juggling.</p>
+            <div class="ch-features">
+                <div class="ch-feature reveal reveal-d1">
+                    <div class="ch-feature-icon purple"><i class="fa-solid fa-layer-group"></i></div>
+                    <h4>Multi Model</h4>
+                    <p>Switch between GPT, Claude, Gemini, and other providers without leaving the app.</p>
+                </div>
+                <div class="ch-feature reveal reveal-d2">
+                    <div class="ch-feature-icon blue"><i class="fa-solid fa-bolt"></i></div>
+                    <h4>Fast &amp; Focused</h4>
+                    <p>A streamlined chat experience built for speed and clarity, not clutter.</p>
+                </div>
+                <div class="ch-feature reveal reveal-d3">
+                    <div class="ch-feature-icon green"><i class="fa-solid fa-sliders"></i></div>
+                    <h4>Your Workflow</h4>
+                    <p>Organize conversations, pick your preferred model, and stay in flow.</p>
+                </div>
+            </div>
+            <a href="https://chatharbor.app" target="_blank" rel="noopener" class="ch-cta">
+                Try ChatHarbor
+                <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
             </a>
         </div>
     </div>
