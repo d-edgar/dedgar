@@ -168,6 +168,19 @@
             border-radius: var(--radius); padding: 28px 32px;
             box-shadow: var(--shadow-sm);
         }
+        .announcement-inner + .announcement-inner { margin-top: 24px; }
+        .conference-meta {
+            display: block; margin-bottom: 12px;
+            font-size: .82rem; font-weight: 600; color: var(--text-2);
+        }
+        .announcement-content p + p { margin-top: 12px; }
+        .conference-links {
+            display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 20px;
+        }
+        .conference-links a { font-size: .88rem; font-weight: 600; }
+        @media (max-width: 640px) {
+            .conference-links { justify-content: center; }
+        }
         .announcement-img {
             width: 180px; height: 180px; border-radius: 14px;
             object-fit: cover; flex-shrink: 0;
@@ -182,7 +195,7 @@
             letter-spacing: .05em; margin-bottom: 12px;
         }
         .announcement-label i { font-size: .7rem; }
-        .announcement-content h3 {
+        .announcement-content h2, .announcement-content h3 {
             font-size: 1.15rem; font-weight: 800; letter-spacing: -.02em;
             margin-bottom: 8px; color: var(--text);
         }
@@ -551,6 +564,19 @@
 <!-- ─── Announcement ─────────────────────────────────── -->
 <section class="announcement">
     <div class="container">
+        <article class="announcement-inner reveal" aria-labelledby="pink27-heading">
+            <div class="announcement-content">
+                <div class="announcement-label"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Coming Up</div>
+                <h2 id="pink27-heading">See you at Pink27</h2>
+                <span class="conference-meta"><time datetime="2027-02-01">February 1</time>–<time datetime="2027-02-04">4, 2027</time> &middot; Bellagio &middot; Las Vegas, NV</span>
+                <p>I'm heading to Pink27, Pink Elephant's annual IT service management conference. The event brings IT leaders and practitioners together for sessions, case studies, and conversations about service management, leadership, automation, and AI.</p>
+                <p>Looking forward to picking up ideas to bring back to the team and meeting others doing this work. Going too? Reach out if you'd like to grab a coffee, talk shop, or just say hello. See you there!</p>
+                <div class="conference-links">
+                    <a href="https://pinkelephant.com/en-us/Pink27/world-best-ITSM-event" target="_blank" rel="noopener">Explore Pink27 <span aria-hidden="true">&rarr;</span></a>
+                    <a href="mailto:david.emerson.edgar@gmail.com?subject=Let%27s%20connect%20at%20Pink27">Let's connect at Pink27 <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+        </article>
         <div class="announcement-inner reveal">
             <img src="shamrock-marathon.jpg" alt="David Edgar after finishing the Shamrock Marathon 2026, holding a finisher medal" class="announcement-img">
             <div class="announcement-content">
