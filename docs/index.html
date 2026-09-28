@@ -186,6 +186,10 @@
             object-fit: cover; flex-shrink: 0;
             box-shadow: var(--shadow);
         }
+        .announcement-img.conference-logo {
+            width: 240px; height: 180px; max-width: 100%;
+            object-fit: contain; background: #1c4266;
+        }
         .announcement-content { flex: 1; }
         .announcement-label {
             display: inline-flex; align-items: center; gap: 8px;
@@ -194,6 +198,7 @@
             font-size: .7rem; font-weight: 700; text-transform: uppercase;
             letter-spacing: .05em; margin-bottom: 12px;
         }
+        .announcement-label.upcoming { background: #fce7f3; color: #9d174d; }
         .announcement-label i { font-size: .7rem; }
         .announcement-content h2, .announcement-content h3 {
             font-size: 1.15rem; font-weight: 800; letter-spacing: -.02em;
@@ -565,8 +570,10 @@
 <section class="announcement">
     <div class="container">
         <article class="announcement-inner reveal" aria-labelledby="pink27-heading">
+            <!-- Official Pink27 artwork: https://www.pinkelephant.com/uploadedimages/Conferences/pink27/covers/itsm-the-next-generation-cover.png -->
+            <img src="pink27-logo.png" alt="Pink27 — Pink Elephant's 30th Annual Global IT Conference and Exhibition" class="announcement-img conference-logo" width="240" height="180" loading="lazy">
             <div class="announcement-content">
-                <div class="announcement-label"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Coming Up</div>
+                <div class="announcement-label upcoming"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Coming Up</div>
                 <h2 id="pink27-heading">See you at Pink27</h2>
                 <span class="conference-meta"><time datetime="2027-02-01">February 1</time>–<time datetime="2027-02-04">4, 2027</time> &middot; Bellagio &middot; Las Vegas, NV</span>
                 <p>I'm heading to Pink27, Pink Elephant's annual IT service management conference. The event brings IT leaders and practitioners together for sessions, case studies, and conversations about service management, leadership, automation, and AI.</p>
