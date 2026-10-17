@@ -4,7 +4,8 @@ David Edgar's personal site — links, resources, and presentation materials.
 
 ## What's Here
 
-- **Personal website** (`docs/index.html`) — a Bootstrap 5 single-page site with links and bio info
+- **Personal website** (`docs/index.html`) — a single HTML page with inline CSS, a project portfolio, links, and bio info
+- **Selected work** — ChatHarbor, Mac admin tools, and Stay Stoked
 - **ACCS Jamf Presentation** — grouped resources for Jamf App Catalog, App Installers, and related tooling
 
 ## Links
