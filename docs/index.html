@@ -173,20 +173,26 @@
                     <a href="https://github.com/d-edgar/ChatHarbor">View source &rarr;</a>
                 </div>
             </div>
-            <figure class="source-figure">
-                <figcaption>Inside ChatHarbor</figcaption>
+            <figure class="app-screenshot">
+                <img src="chatharbor-screenshot.jpg" alt="ChatHarbor running on macOS, showing its welcome screen, Chat and Brainstorm navigation, and cloud and local model-provider options" width="2400" height="1600" loading="lazy" decoding="async">
+                <figcaption><span>ChatHarbor on macOS · Welcome screen</span><a href="chatharbor-screenshot.jpg">Open full-size screenshot &rarr;</a></figcaption>
+            </figure>
+            <div class="project-note">
+                <div>
+                    <h4>The decision behind it</h4>
+                    <p>Keep the app native and let people choose where their models run. SwiftUI and SwiftData support the Mac experience; cloud providers and local servers connect through the same provider protocol.</p>
+                </div>
+                <details class="source-detail">
+                    <summary>Under the hood: Swift</summary>
+                    <p>A real excerpt from the shared provider interface.</p>
                 <pre aria-label="Excerpt from ChatHarbor’s Swift provider interface"><code><span class="code-keyword">func</span> chat(
     model: String,
     messages: [ChatMessage],
     parameters: ChatParameters,
     onToken: <span class="code-keyword">@escaping</span> (String) -&gt; Void
 ) <span class="code-keyword">async throws</span> -&gt; ChatResult</code></pre>
-                <p>One shared interface for cloud and local models. Each provider handles its own connection; the app works with a consistent conversation model.</p>
-                <a href="https://github.com/d-edgar/ChatHarbor/blob/main/ChatHarbor/Services/LLMProvider.swift">Read the provider interface &rarr;</a>
-            </figure>
-            <div class="project-note">
-                <h4>The decision behind it</h4>
-                <p>Keep the app native and let people choose where their models run. SwiftUI and SwiftData support the Mac experience; cloud providers and local servers connect through the same provider protocol.</p>
+                    <a href="https://github.com/d-edgar/ChatHarbor/blob/main/ChatHarbor/Services/LLMProvider.swift">Read the provider interface &rarr;</a>
+                </details>
             </div>
         </article>
 
