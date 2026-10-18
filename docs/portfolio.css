@@ -90,6 +90,16 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 .footer-main, .footer-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-sm); }
 .footer-name { font-family: var(--font-display); font-size: clamp(32px, 4vw, 48px); letter-spacing: -.04em; }
 .footer-meta { margin-top: var(--space-md); color: var(--muted); }
+/* Carry the welcoming hero treatment through the rest of the page. */
+.project-feature { border-radius: 20px; }
+.app-screenshot img, .stoked-art img { border-radius: 12px; }
+.announcement-img { border-radius: 16px; }
+.contact-action { border-radius: 8px; padding: 12px 22px; }
+.work-intro, .tools-section > p, .project-meta { color: var(--muted); }
+.about-box > p + p { margin-top: var(--space-sm); }
+.project-note h4, .stoked-copy h4 { line-height: 1.4; }
+.source-detail summary { min-height: 44px; padding-block: 10px; cursor: pointer; }
+.source-detail summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
 @media (max-width: 900px) {
     .project-feature { padding: var(--space-lg); gap: var(--space-lg); grid-template-columns: minmax(0, 1fr); }
     .project-summary { display: block; }
