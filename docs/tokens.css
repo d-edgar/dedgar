@@ -1,0 +1,33 @@
+/* Existing dedgar.de palette and typography, shared by the portfolio layer. */
+:root {
+    --color-paper: #f7f8f6;
+    --color-surface: #e9ede7;
+    --color-ink: #202720;
+    --color-muted: #546050;
+    --color-accent: #294e39;
+    --color-light: #fff;
+    --color-conference: #1c4266;
+    --font-display: Georgia, "Times New Roman", serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-code: ui-monospace, SFMono-Regular, Menlo, monospace;
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 64px;
+    --space-3xl: 96px;
+    --text-small: 15px;
+    --text-body: 17px;
+    --text-lead: clamp(21px, 2.5vw, 28px);
+    --text-heading: clamp(30px, 4vw, 48px);
+    --text-display: clamp(52px, 7vw, 96px);
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --dur-short: 150ms;
+    --bg: var(--color-paper);
+    --surface: var(--color-surface);
+    --text: var(--color-ink);
+    --muted: var(--color-muted);
+    --accent: var(--color-accent);
+    --light: var(--color-light);
+}

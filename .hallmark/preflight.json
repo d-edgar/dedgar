@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-18",
+  "scope": "Homepage only",
+  "source": "docs/index.html",
+  "framework": "Static HTML",
+  "font_display": "Georgia",
+  "font_body": "System sans-serif",
+  "palette": "Existing green tokens retained",
+  "motion": "No motion library",
+  "spacing": "Existing spacing, new named scale",
+  "preserve": [
+    "palette",
+    "typography",
+    "routes",
+    "analytics"
+  ],
+  "evidence": [
+    "ChatHarbor/ChatHarbor/Services/LLMProvider.swift",
+    "ChatHarbor/README.md",
+    "docs/accs2026.html",
+    "docs/1@2x.png"
+  ]
+}
