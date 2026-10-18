@@ -143,3 +143,11 @@ a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Personal details share the same spacing and quiet links as the project work. */
+.about-photo { margin: var(--space-lg) 0 var(--space-xs); max-width: 360px; }
+.about-photo img { display: block; width: 100%; height: auto; border-radius: 16px; }
+.about-photo figcaption { margin-top: var(--space-sm); color: var(--muted); font-size: 16px; line-height: 1.5; }
+.about-instagram, .project-support a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 16px; font-weight: 600; }
+.project-support { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid var(--muted); }
+.project-support p { margin: 0; color: var(--muted); font-size: 16px; }
