@@ -115,8 +115,8 @@
         }
         @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none!important; } }
     </style>
-    <link rel="stylesheet" href="tokens.css">
-    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="tokens.css?v=20261018">
+    <link rel="stylesheet" href="portfolio.css?v=20261018-portrait">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -138,7 +138,7 @@
 <main id="main" tabindex="-1">
 <section class="hero" id="top">
     <div class="container">
-        <div class="hero-photo"><img src="headshot-600.webp" alt="David Edgar" width="600" height="800" fetchpriority="high"></div>
+        <a class="hero-photo" href="#about" aria-label="Get to know David — about me"><img src="headshot-600.webp" alt="David Edgar" width="600" height="800" fetchpriority="high"><span class="portrait-caption">A little about me <span aria-hidden="true">↗</span></span></a>
         <div class="hero-copy">
         <h1>Hi, I’m David.</h1>
         <p class="hero-tagline">I lead IT support teams and build apps.</p>
